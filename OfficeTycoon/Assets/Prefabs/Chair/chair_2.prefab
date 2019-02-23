@@ -37,7 +37,8 @@ GameObject:
   - component: {fileID: 33720045069512218}
   - component: {fileID: 23948984897210954}
   - component: {fileID: 65996202401840806}
-  - component: {fileID: 114639506017374010}
+  - component: {fileID: 114522002020860234}
+  - component: {fileID: 114495311445397346}
   m_Layer: 0
   m_Name: chair_2
   m_TagString: Untagged
@@ -64,14 +65,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1220662924912244}
-  m_LocalRotation: {x: -0, y: -0.31902307, z: -0, w: 0.947747}
-  m_LocalPosition: {x: -4.8356805, y: -5.9937997, z: -6.267787}
+  m_LocalRotation: {x: -0, y: -0.6239668, z: -0, w: 0.7814509}
+  m_LocalPosition: {x: -9.07468, y: -5.9937997, z: -1.6287869}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4164490813706642}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -37.208, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -77.213005, z: 0}
 --- !u!23 &23948984897210954
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -126,19 +127,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.57260007, y: 0.85779417, z: 0.551494}
   m_Center: {x: 0, y: 0.42962795, z: 0.0011527091}
---- !u!114 &114639506017374010
+--- !u!114 &114495311445397346
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1432677510621824}
-  m_Enabled: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c65ca77d99eec2840aee8f52ba7311aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiElement: {fileID: 0}
+  name: defaultObject
+  timeAlive: 0 days
+--- !u!114 &114522002020860234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1432677510621824}
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
   eraseRenderer: 0
-  toggleHover: 1
   originalLayer: 0
   originalMaterials: []

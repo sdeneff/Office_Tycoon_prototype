@@ -36,7 +36,6 @@ namespace cakeslice
 
 		public int color;
 		public bool eraseRenderer;
-        public bool toggleHover = true;
 
 		[HideInInspector]
 		public int originalLayer;
@@ -47,27 +46,6 @@ namespace cakeslice
 		{
 			Renderer = GetComponent<Renderer>();
 		}
-
-        private void OnMouseEnter()
-        {
-            if (toggleHover)
-            {
-                this.enabled = true;
-                GameManager.Instance.currentHover = gameObject;
-            }
-        }
-        private void OnMouseDown()
-        {
-            GameManager.Instance.currentSelection = gameObject;
-        }
-        private void OnMouseExit()
-        {
-            if (toggleHover)
-            {
-                this.enabled = false;
-                GameManager.Instance.currentHover = null;
-            }
-        }
 
         void OnEnable()
 		{

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     public static GameManager Instance = null;
-    public GameObject currentHover = null;
-    public GameObject currentSelection = null;
 
     // Use this for initialization
     void Awake () {

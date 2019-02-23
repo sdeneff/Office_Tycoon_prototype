@@ -37,7 +37,8 @@ GameObject:
   - component: {fileID: 33851746374394186}
   - component: {fileID: 23858628144764564}
   - component: {fileID: 65259323631129986}
-  - component: {fileID: 114056981704406264}
+  - component: {fileID: 114195857675617088}
+  - component: {fileID: 114456054253103908}
   m_Layer: 0
   m_Name: chair_1
   m_TagString: Untagged
@@ -51,14 +52,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1488797845630462}
-  m_LocalRotation: {x: -0, y: -0.63722295, z: -0, w: 0.7706796}
-  m_LocalPosition: {x: -1.5246806, y: -5.9937997, z: -3.583787}
+  m_LocalRotation: {x: -0, y: -0.99751335, z: -0, w: 0.07047801}
+  m_LocalPosition: {x: -8.188681, y: -5.9937997, z: -4.755787}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4828643941476290}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -3.4940002, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -171.917, z: 0}
 --- !u!4 &4828643941476290
 Transform:
   m_ObjectHideFlags: 1
@@ -126,19 +127,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6753008, y: 0.7606306, z: 0.50644106}
   m_Center: {x: 0, y: 0.37970597, z: 0.018104615}
---- !u!114 &114056981704406264
+--- !u!114 &114195857675617088
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1973091650463708}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
   eraseRenderer: 0
-  toggleHover: 1
   originalLayer: 0
   originalMaterials: []
+--- !u!114 &114456054253103908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1973091650463708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c65ca77d99eec2840aee8f52ba7311aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiElement: {fileID: 0}
+  name: defaultObject
+  timeAlive: 0 days

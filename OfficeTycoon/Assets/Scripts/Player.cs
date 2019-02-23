@@ -19,19 +19,13 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.currentHover && Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1) && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out m_hit))
         {
-            m_agent.SetDestination(GameManager.Instance.currentHover.transform.position);
-            GameManager.Instance.currentSelection = GameManager.Instance.currentHover;
+            Debug.Log("clicked on: " + m_hit.point);
+            Debug.Log("agent destination: " + m_agent.destination);
+            m_agent.SetDestination(m_hit.point);
+            Debug.Log("agent destination: " + m_agent.destination);
         }
-        //if (Input.GetMouseButtonDown(1) && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out m_hit))
-        //{
-           
-        //    Debug.Log("clicked on: " + m_hit.point);
-        //    Debug.Log("agent destination: " + m_agent.destination);
-        //    m_agent.SetDestination(m_hit.point);
-        //    Debug.Log("agent destination: " + m_agent.destination);
-        //}
     }
     private void LateUpdate()
     {
