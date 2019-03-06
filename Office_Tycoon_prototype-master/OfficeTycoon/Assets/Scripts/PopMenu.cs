@@ -34,16 +34,23 @@ public class PopMenu : MonoBehaviour
         }
 
 
-        canvas.SetActive(true);
+        
         foreach (GameObject star in stars)
         {
             star.SetActive(true);
         }
+
+        canvas.SetActive(false);
     }   
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void ShowMenu()
+    {
+        canvas.SetActive(canvas.activeSelf ? false : true);
     }
 }
