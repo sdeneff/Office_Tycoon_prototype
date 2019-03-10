@@ -7,7 +7,6 @@ using UnityEngine;
 public class SelectableObject : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _uiElement;
     private cakeslice.Outline _outline;
     private PopMenu menu;
     public bool hoverOutline = true;
@@ -19,6 +18,10 @@ public class SelectableObject : MonoBehaviour
     void Start()
     {
         menu = GetComponent<PopMenu>();
+        if (!menu)
+        {
+            menu = gameObject.AddComponent<PopMenu>();
+        }
         _outline = GetComponent<cakeslice.Outline>();
         _outline.enabled = false;
     }
