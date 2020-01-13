@@ -48,12 +48,14 @@ public class SelectorBox : MonoBehaviour
     }
 
     void OnNewInteractable(IInteractable interactable){
+        if(interactable == null) return;
         interactables.Add(interactable);
         if(canHighLight) 
             foreach(cakeslice.Outline outline in interactable.GetOutlines()) outline.enabled = true;
     }
 
     void OnInteractableRemoved(IInteractable interactable){
+        if(interactable == null) return;
         interactables.Remove(interactable);
         if(canHighLight) 
             foreach(cakeslice.Outline outline in interactable.GetOutlines()) outline.enabled = false;

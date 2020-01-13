@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterDispenser : MonoBehaviour
+public class WaterDispenser : MonoBehaviour, IInteractable
 {
 	public List<cakeslice.Outline> outlines = new List<cakeslice.Outline>();
 	public List<cakeslice.Outline> GetOutlines(){
