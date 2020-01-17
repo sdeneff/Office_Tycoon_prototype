@@ -12,7 +12,7 @@ public class SitDownTask : BaseTask
 
 	public SitDownTask() : base(){
 		name = "Sit Down";
-		interrupting = true;
+		interrupting = false;
 		interruptable = true;
 	}
 

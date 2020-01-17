@@ -12,6 +12,7 @@ public class WalkToTask : BaseTask
 		name = "Walk To";
 		interrupting = true;
 		interruptable = true;
+		priority = 120;
 	}
 
 	public override void OnAddedToQueue(){

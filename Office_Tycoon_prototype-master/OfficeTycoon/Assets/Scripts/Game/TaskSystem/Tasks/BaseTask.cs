@@ -7,9 +7,10 @@ public class BaseTask {
 	public GameAgent owner;
 	public string name = "dummy";
 	public int priority = 0;
-	public bool interrupting = false;
-	public bool interruptable = false;
-	public bool unique = false; // Only one of this tasks in the queue
+	public bool interrupting = false; // Always tries to interrupt current task, even if lower priority
+	public bool interruptable = false; // Can be interrupted?
+	public bool resumeable = false; // If interrupted, add it back to the queue
+	public bool unique = false; // Removes existing tasks of this type in the queue
 	public bool onlyMyOwnTargets = false; // Can be done only on the TaskTargets assigned to the owner
 	public bool onlyUnownedTargets = false; // Can be done only on the TaskTargets without an owner
 	public float duration = 10f;
@@ -19,15 +20,6 @@ public class BaseTask {
 	public TaskTarget target;
 
 	public virtual void OnAddedToQueue(){
-		if(
-			interrupting && 			
-			owner.awaitingTasks.Contains(this) && 
-			owner.currentTask != null &&
-			owner.currentTask.interruptable
-		){
-			owner.currentTask.OnInterrupted();
-			owner.StartTask(this);
-		}
 	}
 
 	public virtual void OnStart(){

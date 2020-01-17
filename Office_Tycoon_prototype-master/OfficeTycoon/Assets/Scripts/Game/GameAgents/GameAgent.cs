@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -21,14 +22,29 @@ public class GameAgent : MonoBehaviour
     		if(awaitingTasks.Count == 0){
     			//Laze around
     		} else {
+                UpdateQueue();
     			StartTask(awaitingTasks[0]);
     		}
     	} else {
+            UpdateQueue();
     		currentTask.OnUpdate();
     		if(currentTask.failed || currentTask.completed){
-    			currentTask = null;
+                if(awaitingTasks.Count > 0) StartTask(awaitingTasks[0]);
+                else currentTask = null;
     		}
     	}
+    }
+
+    public void UpdateQueue(){
+        if(awaitingTasks.Count == 0 || currentTask == null) return;
+
+        awaitingTasks.Sort((x, y) => y.priority - x.priority);
+        if(awaitingTasks[0].priority > currentTask.priority || awaitingTasks[0].interrupting) {
+            if(currentTask.interruptable){
+                currentTask.OnInterrupted();
+                StartTask(awaitingTasks[0]);
+            }
+        }
     }
 
     public void StartTask(BaseTask task){
@@ -38,19 +54,31 @@ public class GameAgent : MonoBehaviour
     }
 
     public void AddTaskToQueue(BaseTask task){
-        if(task.unique && HasTaskOfType(task.name)) return;
+        if( task.unique ){
+            if(currentTask != null && currentTask.name == task.name){
+                currentTask.priority = task.priority;
+                return;
+            } else if(HasTaskOfType(task.name)) {
+                awaitingTasks.Remove(GetTaskOfType(task.name));
+            }
+        }
+
     	task.owner = this;
     	awaitingTasks.Add(task);
-    	task.OnAddedToQueue();
-    	//TODO: priority
+        task.OnAddedToQueue();
+        UpdateQueue();
+    }
+
+    public BaseTask GetTaskOfType(string taskName){
+        if(currentTask != null && currentTask.name == taskName) return currentTask;
+        foreach(BaseTask task in awaitingTasks){
+            if(task.name == taskName) return task;
+        }
+        return null;
     }
 
     public bool HasTaskOfType(string taskName){
-        if(currentTask != null && currentTask.name == taskName) return true;
-        foreach(BaseTask task in awaitingTasks){
-            if(task.name == taskName) return true;
-        }
-        return false;
+        return GetTaskOfType(taskName) != null;
     }
 
     private void LateUpdate()

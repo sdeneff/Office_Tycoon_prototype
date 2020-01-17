@@ -16,6 +16,7 @@ public class DrinkWaterTask : BaseTask
 		interruptable = false;
 		unique = true;
 		timeLeft = 2;
+		priority = 100;
 	}
 
 	public override void OnAddedToQueue(){
