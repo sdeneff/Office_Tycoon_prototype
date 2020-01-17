@@ -37,6 +37,7 @@ public class DrinkWaterTask : BaseTask
 		base.OnUpdate();
 		if(_reached) {
 			timeLeft -= Time.deltaTime;
+			owner.needs.thirst.currentAmount = 0; //TODO: Tween it?
 			if(timeLeft < 0) OnInterrupted();
 		} else {
 			if(owner.agent.pathEndPosition == owner.transform.position && !target.busy){

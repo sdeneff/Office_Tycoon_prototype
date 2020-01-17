@@ -8,6 +8,7 @@ public class GameAgent : MonoBehaviour
     public List<BaseTask> awaitingTasks = new List<BaseTask>();
     public BaseTask currentTask;
     public NavMeshAgent agent;
+    public PhysiologicalNeeds needs;
     public Animator animator;
 
     public void Start(){

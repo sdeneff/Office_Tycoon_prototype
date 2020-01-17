@@ -306,6 +306,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -574,6 +575,7 @@ GameObject:
   - component: {fileID: 8737635206358241715}
   - component: {fileID: 8797341191599027193}
   - component: {fileID: 8014131155953891240}
+  - component: {fileID: 3241628531629767718}
   m_Layer: 0
   m_Name: BaseGameAgent
   m_TagString: Untagged
@@ -664,8 +666,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ed7bfa1ae04e94c9133c8b7c8eb16e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  awaitingTasks: []
+  currentTask:
+    owner: {fileID: 0}
+    name: dummy
+    priority: 0
+    interrupting: 0
+    interruptable: 0
+    unique: 0
+    onlyMyOwnTargets: 0
+    onlyUnownedTargets: 0
+    duration: 10
+    timeLeft: 10
+    completed: 0
+    failed: 0
+    target: {fileID: 0}
   agent: {fileID: 8737635206358241715}
+  needs: {fileID: 3241628531629767718}
   animator: {fileID: 8836457499045843861}
+--- !u!114 &3241628531629767718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8930935149946561635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd34bbc84e970f545a662f7bb7973c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameAgent: {fileID: 8014131155953891240}
+  thirst:
+    source: {fileID: 3241628531629767718}
+    currentAmount: 0
+    maxAmount: 100
+    gainPerSecond: 10
+    taskChanceCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8432357
+        value: 0.26761782
+        inSlope: 1.1019783
+        outSlope: 1.1019783
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
 --- !u!1 &8930965185318096973
 GameObject:
   m_ObjectHideFlags: 0

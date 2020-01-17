@@ -18,5 +18,7 @@ public class PlayerController : MonoBehaviour
 	        	gameAgent.AddTaskToQueue(walkToTask);
     		}
         }
+        if (Input.GetMouseButtonDown(1)){
+        }
     }
 }
