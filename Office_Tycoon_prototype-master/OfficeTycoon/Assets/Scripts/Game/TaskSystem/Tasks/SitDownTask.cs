@@ -6,8 +6,6 @@ using UnityEngine.AI;
 [System.Serializable]
 public class SitDownTask : BaseTask
 {
-	public Vector3 position;
-
 	bool _reached = false;
 
 	public SitDownTask() : base(){
@@ -23,7 +21,7 @@ public class SitDownTask : BaseTask
 	public override void OnStart(){
 		base.OnStart();
 		owner.agent.enabled = true;
-		owner.agent.destination = position;
+		owner.agent.destination = target.transform.position;
 	}
 
 	public override void OnComplete(){
@@ -35,8 +33,9 @@ public class SitDownTask : BaseTask
 		if(_reached) return;
 		if(owner.agent.pathEndPosition == owner.transform.position){
 			owner.agent.enabled = false;
-			owner.transform.position = position;
+			owner.transform.position = target.transform.position;
 			_reached = true;
+			target.busy = true;
 		} else if(owner.agent.pathStatus == NavMeshPathStatus.PathInvalid){
 			OnFailed();
 		}
@@ -44,6 +43,7 @@ public class SitDownTask : BaseTask
 
 	public override void OnInterrupted(){
 		_reached = false;
+		target.busy = false;
 		OnComplete();
 	}
 

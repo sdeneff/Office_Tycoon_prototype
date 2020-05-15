@@ -27,7 +27,7 @@ public class PhysiologicalNeeds : MonoBehaviour
 	public class Thirst : Need {
 		public override void TryFulfill(){
 			DrinkWaterTask drinkWaterTask = new DrinkWaterTask();
-            drinkWaterTask.target = TaskManager.GetTarget("Drink Water");//GetComponent<TaskTarget>();
+            drinkWaterTask.target = TaskManager.GetTarget("Drink Water");
             source.gameAgent.AddTaskToQueue(drinkWaterTask);
 		}
 	}

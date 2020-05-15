@@ -11,7 +11,7 @@ public class SelectableObject : MonoBehaviour
     private PopMenu menu;
     public bool hoverOutline = true;
 
-    public string name = "defaultObject";
+    public new string name = "defaultObject";
     public string timeAlive = "0 days";
 
     // Use this for initialization

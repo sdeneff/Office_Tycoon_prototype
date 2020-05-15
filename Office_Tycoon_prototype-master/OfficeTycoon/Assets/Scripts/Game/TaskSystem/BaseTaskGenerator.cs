@@ -16,6 +16,9 @@ public class BaseTaskGenerator : MonoBehaviour
     	_time -= Time.deltaTime * timeMultiplier;
     	if(_time < 0f){
     		_time = time - _time;
+            GenerateTask();
     	}
     }
+
+    public virtual void GenerateTask(){}
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InteractableTest : MonoBehaviour, IInteractable
 {
+	public TaskTarget target;
 	public List<cakeslice.Outline> outlines = new List<cakeslice.Outline>();
 	public List<cakeslice.Outline> GetOutlines(){
 		return outlines;
@@ -11,7 +12,7 @@ public class InteractableTest : MonoBehaviour, IInteractable
 
     public void OnInteraction(GameAgent source){
     	SitDownTask sitDownTask = new SitDownTask();
-    	sitDownTask.position = transform.position;
+    	sitDownTask.target = target;
     	source.AddTaskToQueue(sitDownTask);
     }
 }

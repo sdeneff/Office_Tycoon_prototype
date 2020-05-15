@@ -6,8 +6,6 @@ using UnityEngine.AI;
 [System.Serializable]
 public class DrinkWaterTask : BaseTask
 {
-	public TaskTarget target;
-
 	bool _reached = false;
 
 	public DrinkWaterTask() : base(){
@@ -15,7 +13,8 @@ public class DrinkWaterTask : BaseTask
 		interrupting = true;
 		interruptable = false;
 		unique = true;
-		timeLeft = 2;
+		duration = 2;
+		timeLeft = duration;
 		priority = 100;
 	}
 

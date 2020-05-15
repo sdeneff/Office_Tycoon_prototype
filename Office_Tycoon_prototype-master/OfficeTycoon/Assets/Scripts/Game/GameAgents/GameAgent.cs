@@ -48,9 +48,12 @@ public class GameAgent : MonoBehaviour
     }
 
     public void StartTask(BaseTask task){
+        BaseTask oldTask = currentTask;
     	if(awaitingTasks.Contains(task)) awaitingTasks.Remove(task);
     	currentTask = task;
     	currentTask.OnStart();
+        if(oldTask != null && oldTask.resumeable) AddTaskToQueue(oldTask);
+
     }
 
     public void AddTaskToQueue(BaseTask task){
@@ -59,7 +62,9 @@ public class GameAgent : MonoBehaviour
                 currentTask.priority = task.priority;
                 return;
             } else if(HasTaskOfType(task.name)) {
-                awaitingTasks.Remove(GetTaskOfType(task.name));
+                BaseTask existingTask = GetTaskOfType(task.name);
+                if(existingTask.resumeable) return;
+                else awaitingTasks.Remove(existingTask);
             }
         }
 
